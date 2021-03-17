@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Blog
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -9,12 +10,11 @@ def home(request):
 
 def posts(request):
     all_blogs = Blog.objects.all()
-    context = {'all_blogs': all_blogs}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html', {'all_blogs': all_blogs})
 
 
-def post_detail(request, id):
-    obj = Blog.objects.get(id=id)
+def post_detail(request, x):
+    obj = Blog.objects.get(slug=x)
     # context = {
     #     'title': obj.title,
     #     'author': obj.author,

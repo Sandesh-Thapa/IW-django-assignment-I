@@ -4,5 +4,5 @@ from django.urls import path
 urlpatterns = [
     path('', home),
     path('posts/', posts, name='index'),
-    path('<int:id>/', post_detail, name='detail'),
+    path('<str:x>/', post_detail, name='detail'),
 ]
